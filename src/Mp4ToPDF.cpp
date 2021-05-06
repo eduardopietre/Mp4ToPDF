@@ -13,7 +13,7 @@ int main()
 	UniqueImageIdentifier* uniqueImageIdentifier = new UniqueImageIdentifier(queue, filename);
 
 	std::thread threadIO(&Mp4FileReader::ExtractFramesFromVideoFile, fileReader);
-	std::thread threadProcessing(&UniqueImageIdentifier::ProcessWaitQueue, uniqueImageIdentifier);
+	std::thread threadProcessing(&UniqueImageIdentifier::FindAndSaveUniques, uniqueImageIdentifier);
 
 	threadIO.join();
 	threadProcessing.join();

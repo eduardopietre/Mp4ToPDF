@@ -9,5 +9,5 @@ set(OpenCV_DIR D:/InPath/opencv/building_gpu)
 find_package(OpenCV REQUIRED PATHS D:/InPath/opencv/building_cpu NO_DEFAULT_PATH)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(Mp4ToPDF ${Mp4ToPDF_SOURCES})
+add_executable(Mp4ToPDF ${Mp4ToPDF_SOURCES} "src/ImageDifference.h" "src/ImageDifference.cpp")
 target_link_libraries(Mp4ToPDF PRIVATE ${OpenCV_LIBS})
