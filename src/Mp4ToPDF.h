@@ -5,3 +5,6 @@
 #include "TQueue.h"
 #include "Mp4FileReader.h"
 #include "UniqueImageIdentifier.h"
+
+
+void DoMp4ToPDF(const std::string& filename, const std::string& outfilename, int frameskip);

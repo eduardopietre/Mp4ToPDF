@@ -8,8 +8,7 @@ void UniqueImageIdentifier::FindAndSaveUniques() {
 
 
 void UniqueImageIdentifier::SaveUniques() {
-	std::string out = "D:/Development/Python/PyMp4ToPDF/cpptest.pdf";
-	PDFWriter writer(out, &_uniqueFrames);
+	PDFWriter writer(_outfilename, &_uniqueFrames);
 	writer.Write();
 }
 
