@@ -3,6 +3,7 @@
 #include "TQueue.h"
 #include "ImageDifference.h"
 #include "JpegImage.h"
+#include "PDFWriter.h"
 
 #include <opencv2/core.hpp>
 #include <opencv2/core/core.hpp>

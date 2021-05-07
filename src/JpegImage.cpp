@@ -11,13 +11,18 @@ JpegImage::JpegImage(cv::Mat mat) {
 }
 
 
-const EncodedImageSize* JpegImage::GetEncodedImageSize() {
+EncodedImageSize* JpegImage::GetEncodedImageSize() {
 	return &_encodedImageSize;
 }
 
 
-const std::vector<uchar>* JpegImage::GetJpegBuffer() {
+std::vector<uchar>* JpegImage::GetJpegBuffer() {
 	return &_jpegBuffer;
+}
+
+
+cv::Size JpegImage::Size() {
+	return _mat.size();
 }
 
 
