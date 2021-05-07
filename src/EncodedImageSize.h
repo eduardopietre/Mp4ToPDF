@@ -1,5 +1,7 @@
 #pragma once
 
+// Heavily based on the example of https://gist.github.com/bencz/cebd1125dca7b81cdd23
+
 #include <opencv2/core.hpp>
 #include <opencv2/core/core.hpp>
 #include <iostream>

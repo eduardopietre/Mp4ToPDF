@@ -1,5 +1,8 @@
 #pragma once
 
+// Heavily based on the example of https://gist.github.com/bencz/cebd1125dca7b81cdd23
+
+
 #include "JpegImage.h"
 #include "EncodedImageSize.h"
 

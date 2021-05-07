@@ -1,5 +1,7 @@
 #include "PDFWriter.h"
 
+// Heavily based on the example of https://gist.github.com/bencz/cebd1125dca7b81cdd23
+
 
 PDFWriter::PDFWriter(const std::string filename, std::list<cv::Mat>* images) {
 	_filename = filename;
