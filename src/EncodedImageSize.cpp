@@ -31,6 +31,8 @@ unsigned long EncodedImageSize::GetLength() {
 }
 
 
-EncodedImageSize::EncodedImageSize(std::vector<uchar>* jpegBuffer, cv::Size& size) {
-
+EncodedImageSize::EncodedImageSize(const std::vector<uchar>* jpegBuffer, const cv::Size& size) {
+	_width = size.width;
+	_height = size.height;
+	_length = jpegBuffer->size();
 }

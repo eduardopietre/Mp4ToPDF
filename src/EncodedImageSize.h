@@ -12,7 +12,7 @@
 class EncodedImageSize {
 public:
 	EncodedImageSize() {};
-	EncodedImageSize(std::vector<uchar>* jpegBuffer, cv::Size& size);
+	EncodedImageSize(const std::vector<uchar>* jpegBuffer, const cv::Size& size);
 
 	void SetWidth(unsigned int w);
 	void SetHeight(unsigned int h);

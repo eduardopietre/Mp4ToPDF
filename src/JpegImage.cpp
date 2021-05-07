@@ -6,8 +6,7 @@ JpegImage::JpegImage(cv::Mat mat) {
 	_jpegBuffer = JpegBufferFromMat(&_mat);
 
 	cv::Size size = _mat.size();
-	//_encodedImageSize = EncodedImageSize(&_jpegBuffer, size);
-	std::cout << "aaaaa" << std::endl;
+	_encodedImageSize = EncodedImageSize(&_jpegBuffer, size);
 }
 
 
