@@ -12,6 +12,9 @@
 class JpegImage {
 public:
 	JpegImage(const cv::Mat mat);
+	const EncodedImageSize* GetEncodedImageSize();
+	const std::vector<uchar>* GetJpegBuffer();
+
 private:
 	cv::Mat _mat;
 	std::vector<uchar> _jpegBuffer;
