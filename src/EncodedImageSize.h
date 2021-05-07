@@ -21,6 +21,8 @@ public:
 	unsigned int GetEncodedWidth();
 	unsigned int GetEncodedHeight();
 
+	bool IsValid();
+
 private:
 	unsigned int _width = 0;
 	unsigned int _height = 0;
@@ -28,6 +30,8 @@ private:
 
 	unsigned int _encodedWidth = 0;
 	unsigned int _encodedHeight = 0;
+
+	bool _isValid = false;
 };
 
 std::pair<unsigned int, unsigned int> CalculateEncodedHeightWidth(const std::vector<uchar>* jpegBuffer);

@@ -26,6 +26,11 @@ unsigned int EncodedImageSize::GetEncodedHeight() {
 }
 
 
+bool EncodedImageSize::IsValid() {
+	return _isValid;
+}
+
+
 EncodedImageSize::EncodedImageSize(const std::vector<uchar>* jpegBuffer, const cv::Size& size) {
 	_width = size.width;
 	_height = size.height;
@@ -34,6 +39,8 @@ EncodedImageSize::EncodedImageSize(const std::vector<uchar>* jpegBuffer, const c
 	std::pair<int, int> heightWidth = CalculateEncodedHeightWidth(jpegBuffer);
 	_encodedWidth = heightWidth.first;
 	_encodedHeight = heightWidth.second;
+
+	_isValid = (_encodedWidth > 0 && _encodedHeight > 0);
 }
 
 
