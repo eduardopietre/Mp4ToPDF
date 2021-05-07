@@ -7,6 +7,7 @@ JpegImage::JpegImage(cv::Mat mat) {
 
 	cv::Size size = _mat.size();
 	_encodedImageSize = EncodedImageSize(&_jpegBuffer, size);
+	CalculateEncodedHeightWidth(&_jpegBuffer);
 }
 
 
@@ -16,5 +17,3 @@ std::vector<uchar> JpegBufferFromMat(const cv::Mat* mat) {
 	cv::imencode(".jpg", *mat, buffer, param);
 	return std::move(buffer);
 }
-
-

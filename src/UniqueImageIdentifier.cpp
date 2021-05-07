@@ -11,7 +11,7 @@ void UniqueImageIdentifier::FindAndSaveUniques() {
 void UniqueImageIdentifier::SaveUniques() {
 
 	for (cv::Mat frame : _uniqueFrames) {
-		JpegImage image(frame);
+		JpegImage image(std::move(frame));
 		
 	}
 }
