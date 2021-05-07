@@ -11,7 +11,7 @@ bool ImageDifference::PassRawDifferenceTest(const cv::Mat& img1, const cv::Mat& 
 	cv::absdiff(img1, img2, result);
 	cv::compare(result, _floatingMargin, result, cv::CMP_LT);
 	cv::Scalar mean = cv::mean(result);
-	double pctEqual = (mean[0] + mean[1] + mean[2]) / 255;  // true's are set to 255, so divide by it.
+	double pctEqual = (mean[0] + mean[1] + mean[2]) / 3 / 255;  // true's are set to 255, so divide by it.
 	return pctEqual < _rawThreshold;
 }
 

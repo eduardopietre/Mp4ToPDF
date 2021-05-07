@@ -23,4 +23,5 @@ void Mp4FileReader::ExtractFramesFromVideoFile() {
 			break;
 		}
 	}
+	std::cout << "Extracted " << size << " frames from video." << std::endl;
 }
