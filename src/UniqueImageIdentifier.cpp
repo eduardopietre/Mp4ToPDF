@@ -10,6 +10,10 @@ void UniqueImageIdentifier::FindAndSaveUniques() {
 
 void UniqueImageIdentifier::SaveUniques() {
 
+	for (cv::Mat frame : _uniqueFrames) {
+		JpegImage image(frame);
+		
+	}
 }
 
 
@@ -24,6 +28,7 @@ void UniqueImageIdentifier::ProcessWaitQueue() {
 			if (_isFirstFrame) {
 				_isFirstFrame = false;
 			}
+			break;
 		}
 	}
 }
