@@ -18,13 +18,11 @@
 
 class PDFWriter {
 public:
-	PDFWriter(const std::string filename, std::list<cv::Mat>* images) : _filename(filename) {
-		_images = std::vector<cv::Mat>(std::begin(*images), std::end(*images));
-	};
+	PDFWriter(const std::string filename, std::list<cv::Mat>* images);
 	bool Write();
 
 private:
-	const std::string _filename;
+	std::string _filename;
 	std::vector<cv::Mat> _images;
 };
 

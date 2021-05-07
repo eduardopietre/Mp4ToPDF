@@ -9,9 +9,11 @@ void Mp4FileReader::ExtractFramesFromVideoFile() {
 	}
 
 	int framerCount = videoFile.get(cv::CAP_PROP_FRAME_COUNT);
-	_framesQueue->setSize(std::floor(framerCount / _everyXFrames));
+	long size = std::floor(framerCount / _everyXFrames);
+	_framesQueue->setSize(size);
 
-	for (int i = 0; i < framerCount; i += _everyXFrames) {
+	// Back to front
+	for (int i = (_everyXFrames * size) - 1; i > 0; i -= _everyXFrames) {
 		videoFile.set(cv::CAP_PROP_POS_FRAMES, i);
 
 		cv::Mat singleFrame;

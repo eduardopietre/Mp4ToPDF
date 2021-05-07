@@ -1,5 +1,13 @@
 #include "PDFWriter.h"
 
+
+PDFWriter::PDFWriter(const std::string filename, std::list<cv::Mat>* images) {
+	_filename = filename;
+	_images = std::vector<cv::Mat>(std::begin(*images), std::end(*images));
+	std::reverse(_images.begin(), _images.end());
+};
+
+
 bool PDFWriter::Write() {
 	std::string device = "DeviceRGB";
 
