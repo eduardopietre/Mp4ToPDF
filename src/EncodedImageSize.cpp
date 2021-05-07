@@ -30,10 +30,14 @@ EncodedImageSize::EncodedImageSize(const std::vector<uchar>* jpegBuffer, const c
 	_width = size.width;
 	_height = size.height;
 	_length = jpegBuffer->size();
+
+	std::pair<int, int> heightWidth = CalculateEncodedHeightWidth(jpegBuffer);
+	_encodedWidth = heightWidth.first;
+	_encodedHeight = heightWidth.second;
 }
 
 
-std::pair<int, int> CalculateEncodedHeightWidth(const std::vector<uchar>* jpegBuffer) {
+std::pair<unsigned int, unsigned int> CalculateEncodedHeightWidth(const std::vector<uchar>* jpegBuffer) {
 	std::vector<uchar> buffer(jpegBuffer->begin(), jpegBuffer->begin() + 24);
 	long len = jpegBuffer->size();
 
@@ -61,11 +65,11 @@ std::pair<int, int> CalculateEncodedHeightWidth(const std::vector<uchar>* jpegBu
 
 	if (buffer[0] == 0xFF && buffer[1] == 0xD8 && buffer[2] == 0xFF)
 	{
-		int height = (buffer[7] << 8) + buffer[8];
-		int width = (buffer[9] << 8) + buffer[10];
+		unsigned int height = (buffer[7] << 8) + buffer[8];
+		unsigned int width = (buffer[9] << 8) + buffer[10];
 
-		return std::pair<int, int>(height, width);
+		return std::pair<unsigned int, unsigned int>(height, width);
 	}
 
-	return std::pair<int, int>(0, 0);
+	return std::pair<unsigned int, unsigned int>(0, 0);
 }

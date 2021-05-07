@@ -30,4 +30,4 @@ private:
 	unsigned int _encodedHeight = 0;
 };
 
-std::pair<int, int> CalculateEncodedHeightWidth(const std::vector<uchar>* jpegBuffer);
+std::pair<unsigned int, unsigned int> CalculateEncodedHeightWidth(const std::vector<uchar>* jpegBuffer);
