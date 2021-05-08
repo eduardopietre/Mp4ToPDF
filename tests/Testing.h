@@ -1,7 +1,7 @@
 // Simple header wrote by me.
 // Boiler plate for testing.
 
-
+#include <opencv2/core/utils/logger.hpp>
 #include <iostream>
 #include <chrono>
 
