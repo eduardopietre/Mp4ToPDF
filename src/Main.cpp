@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
 
 	auto start = std::chrono::high_resolution_clock::now();
 
-	DoMp4ToPDF(filename, outfilename, frameskip);
+	DoMp4ToPDF(filename, outfilename, frameskip, true);
 
 	auto stop = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);

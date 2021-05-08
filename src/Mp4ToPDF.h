@@ -7,4 +7,4 @@
 #include "UniqueImageIdentifier.h"
 
 
-void DoMp4ToPDF(const std::string& filename, const std::string& outfilename, int frameskip);
+void DoMp4ToPDF(const std::string& filename, const std::string& outfilename, int frameskip, bool verbose);

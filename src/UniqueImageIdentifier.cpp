@@ -8,7 +8,9 @@ void UniqueImageIdentifier::FindAndSaveUniques() {
 
 
 void UniqueImageIdentifier::SaveUniques() {
-	std::cout << "Found " << _uniqueFrames.size() << " unique frames. Writing output file..." << std::endl;
+	if (_verbose) {
+		std::cout << "Found " << _uniqueFrames.size() << " unique frames. Writing output file..." << std::endl;
+	}
 	PDFWriter writer(_outfilename, &_uniqueFrames);
 	writer.Write();
 }

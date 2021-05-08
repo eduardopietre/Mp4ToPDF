@@ -15,8 +15,8 @@
 
 class UniqueImageIdentifier {
 public:
-	UniqueImageIdentifier(TQueue<cv::Mat>* queue, const std::string& outfilename) :
-		_framesQueue(queue), _outfilename(outfilename) {};
+	UniqueImageIdentifier(TQueue<cv::Mat>* queue, const std::string& outfilename, bool verbose = false) :
+		_framesQueue(queue), _outfilename(outfilename), _verbose(verbose) {};
 	void FindAndSaveUniques();
 
 private:
@@ -28,6 +28,7 @@ private:
 	std::list<cv::Mat> _uniqueFrames;
 	cv::Mat* _previousFrame = NULL;
 	bool _isFirstFrame = true;
+	bool _verbose;
 
 	ImageDifference _imageDifference;
 };
