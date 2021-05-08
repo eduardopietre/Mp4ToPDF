@@ -12,8 +12,12 @@ int main(int argc, char* argv[]) {
 
 	std::cout << "Starting TestsMain" << std::endl;
 
-	TESTING_TIME_EXECUTION("One Mp4ToPDF Conversion", {
-		DoMp4ToPDF(filename, outfilename, frameskip);
+	TESTING_TIME_EXECUTION("1x Mp4ToPDF Conversion", {
+		DoMp4ToPDF(filename, outfilename, frameskip, false);
+	});
+
+	TESTING_MULTIPLE_TIME_EXECUTION("10x Mp4ToPDF Conversion", 10, {
+		DoMp4ToPDF(filename, outfilename, frameskip, false);
 	});
 
 	return 0;
