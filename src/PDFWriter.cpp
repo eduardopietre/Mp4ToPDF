@@ -20,6 +20,10 @@ bool PDFWriter::Write() {
 	FILE* fp;
 	fopen_s(&fp, _filename.c_str(), "wb");
 
+	if (fp == NULL) {
+		return false;
+	}
+
 	fprintf(fp, "%%PDF-1.2\r\n");
 	fprintf(fp, "\r\n");
 	AddPosInVector(fp, &objp);
