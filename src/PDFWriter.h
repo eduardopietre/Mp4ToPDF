@@ -26,7 +26,7 @@ public:
 
 private:
 	std::string _filename;
-	std::vector<cv::Mat> _images;
+	std::vector<JpegImage> _images;
 };
 
 

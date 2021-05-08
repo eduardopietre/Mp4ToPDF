@@ -5,7 +5,11 @@
 
 PDFWriter::PDFWriter(const std::string filename, std::list<cv::Mat>* images) {
 	_filename = filename;
-	_images = std::vector<cv::Mat>(std::begin(*images), std::end(*images));
+
+	_images.reserve(images->size());  // Resize only once.
+	for (auto it = images->begin(); it != images->end(); ++it) {
+		_images.push_back(std::move(JpegImage(*it)));
+	}
 	std::reverse(_images.begin(), _images.end());
 };
 
@@ -62,9 +66,9 @@ bool PDFWriter::Write() {
 		int no_c = no_p + 1;
 		std::string name = "/Jpeg" + std::to_string(i + 1);
 
-		JpegImage image(_images.at(i));
-		cv::Size size = image.Size();
-		EncodedImageSize* encodedSize = image.GetEncodedImageSize();
+		JpegImage* image = &_images.at(i);
+		cv::Size size = image->Size();
+		EncodedImageSize* encodedSize = image->GetEncodedImageSize();
 
 		fprintf(fp, "\r\n");
 		AddPosInVector(fp, &objp);
@@ -99,9 +103,9 @@ bool PDFWriter::Write() {
 	{
 		std::string name = "/Jpeg" + std::to_string(i + 1);
 
-		JpegImage image(_images.at(i));
-		cv::Size size = image.Size();
-		EncodedImageSize* encodedSize = image.GetEncodedImageSize();
+		JpegImage* image = &_images.at(i);
+		cv::Size size = image->Size();
+		EncodedImageSize* encodedSize = image->GetEncodedImageSize();
 
 		fprintf(fp, "\r\n");
 		AddPosInVector(fp, &objp);
@@ -113,7 +117,7 @@ bool PDFWriter::Write() {
 		fprintf(fp, ">>\r\n");
 		fprintf(fp, "stream\r\n");
 
-		std::vector<uchar>* jpegBuffer = image.GetJpegBuffer();
+		std::vector<uchar>* jpegBuffer = image->GetJpegBuffer();
 		uchar* buffer = &(*jpegBuffer)[0];
 		fwrite(buffer, sizeof(uchar), jpegBuffer->size(), fp);
 
