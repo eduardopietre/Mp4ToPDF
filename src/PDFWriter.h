@@ -25,9 +25,16 @@ public:
 	bool Write();
 
 private:
+	void WritePDFHeader(FILE* fp);
+	void WriteImagesInfo( FILE* fp);
+	void WriteImages(FILE* fp);
+	void WritePDFTail(FILE* fp);
+
+	void AddObjectsPos(FILE* fp);
+
 	std::string _filename;
 	std::vector<JpegImage> _images;
+	std::vector<fpos_t> _pdfObjectsPos;
+	int _lenImages;
+	int _pdfNumElemJ;
 };
-
-
-void AddPosInVector(FILE* fp, std::vector<fpos_t>* positionVector);
