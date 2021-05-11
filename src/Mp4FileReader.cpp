@@ -8,8 +8,8 @@ void Mp4FileReader::ExtractFramesFromVideoFile() {
 		throw "At ExtractFramesFromVideoFile: Error when reading input file.";
 	}
 
-	int framerCount = videoFile.get(cv::CAP_PROP_FRAME_COUNT);
-	long size = std::floor(framerCount / _everyXFrames);
+	int framerCount = (int) videoFile.get(cv::CAP_PROP_FRAME_COUNT);
+	long size = (long) std::floor(framerCount / _everyXFrames);
 	_framesQueue->setSize(size);
 
 	// Back to front

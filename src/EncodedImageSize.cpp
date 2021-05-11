@@ -35,7 +35,7 @@ bool EncodedImageSize::IsValid() {
 EncodedImageSize::EncodedImageSize(const std::vector<uchar>* jpegBuffer, const cv::Size& size) {
 	_width = size.width;
 	_height = size.height;
-	_length = jpegBuffer->size();
+	_length = (int) jpegBuffer->size();
 
 	std::pair<int, int> heightWidth = CalculateEncodedHeightWidth(jpegBuffer);
 	_encodedWidth = heightWidth.first;
@@ -47,7 +47,7 @@ EncodedImageSize::EncodedImageSize(const std::vector<uchar>* jpegBuffer, const c
 
 std::pair<unsigned int, unsigned int> CalculateEncodedHeightWidth(const std::vector<uchar>* jpegBuffer) {
 	std::vector<uchar> buffer(jpegBuffer->begin(), jpegBuffer->begin() + 24);
-	long len = jpegBuffer->size();
+	long len = (int) jpegBuffer->size();
 
 	if (buffer[0] == 0xFF && buffer[1] == 0xD8 && buffer[2] == 0xFF && buffer[3] == 0xE0 &&
 		buffer[6] == 0x4A && buffer[7] == 0x46 && buffer[8] == 0x49 && buffer[9] == 0x46) {
