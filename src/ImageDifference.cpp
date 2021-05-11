@@ -17,6 +17,10 @@ bool ImageDifference::PassRawDifferenceTest(const cv::Mat& img1, const cv::Mat& 
 
 
 bool ImageDifference::PassSSIMDifferenceTest(const cv::Mat& img1, const cv::Mat& img2) {
+#if GPU_SSIM
 	double ssmi = StructuralSimilarityIndexMultichannelCUDA(img1, img2, _bufferSSIM);
+#else
+	double ssmi = StructuralSimilarityIndexMultichannelCPU(img1, img2);
+#endif
 	return ssmi < _ssmiThreshold;
 }

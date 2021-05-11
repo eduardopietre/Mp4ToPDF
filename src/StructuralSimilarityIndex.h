@@ -7,9 +7,12 @@
 #include <opencv2/core.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/core/cuda.hpp>
+#include <vector>
+
+#if GPU_SSIM
+
 #include <opencv2/cudaarithm.hpp>
 #include <opencv2/cudafilters.hpp>
-#include <vector>
 
 struct BufferSSIM {
     // Data allocations are very expensive on CUDA. Use a buffer to solve: allocate once reuse later.
@@ -24,8 +27,14 @@ struct BufferSSIM {
     cv::cuda::GpuMat buf;
 };
 
-
-double MeanFromRGBAScalar(const cv::Scalar& scalar);
 double StructuralSimilarityIndexMultichannelCUDA(const cv::Mat& i1, const cv::Mat& i2, BufferSSIM& b);
+
+#else
+
+#include <opencv2/imgproc.hpp>
+
 double StructuralSimilarityIndexMultichannelCPU(const cv::Mat& img1_orig, const cv::Mat& img2_orig);
 
+#endif
+
+double MeanFromRGBAScalar(const cv::Scalar& scalar);

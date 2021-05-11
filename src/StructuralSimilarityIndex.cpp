@@ -9,6 +9,7 @@ double MeanFromRGBAScalar(const cv::Scalar& scalar) {
     return (scalar[0] + scalar[1] + scalar[2]) / 3;
 }
 
+#if GPU_SSIM
 
 double StructuralSimilarityIndexMultichannelCUDA(const cv::Mat& i1, const cv::Mat& i2, BufferSSIM& b)
 {
@@ -87,7 +88,7 @@ double StructuralSimilarityIndexMultichannelCUDA(const cv::Mat& i1, const cv::Ma
     return MeanFromRGBAScalar(mssim);
 }
 
-
+#else
 
 double StructuralSimilarityIndexMultichannelCPU(const cv::Mat& img1_orig, const cv::Mat& img2_orig) {
     constexpr double C1 = 6.5025;
@@ -135,3 +136,4 @@ double StructuralSimilarityIndexMultichannelCPU(const cv::Mat& img1_orig, const 
     return MeanFromRGBAScalar(mssim_channels);
 }
 
+#endif

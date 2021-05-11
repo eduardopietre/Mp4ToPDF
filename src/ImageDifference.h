@@ -16,5 +16,7 @@ private:
 	double _floatingMargin;
 	double _rawThreshold;
 	double _ssmiThreshold;
+#if GPU_SSIM
 	BufferSSIM _bufferSSIM;
+#endif
 };

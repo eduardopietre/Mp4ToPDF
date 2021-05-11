@@ -1,6 +1,8 @@
 ﻿cmake_minimum_required(VERSION 3.8)
 project("Mp4ToPDF")
 
+add_compile_definitions(GPU_SSIM)
+
 file(GLOB_RECURSE Mp4ToPDF_SOURCES CONFIGURE_DEPENDS "src/*.cpp")
 file(GLOB_RECURSE Mp4ToPDF_HEADERS CONFIGURE_DEPENDS "src/*.h")
 
