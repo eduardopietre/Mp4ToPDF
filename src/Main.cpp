@@ -2,7 +2,7 @@
 
 
 int main(int argc, char* argv[]) {
-	Arguments args = ParseArguments(argc, argv);
+	ArgParser args = ArgParser(argc, argv);
 	if (!args.isValid) {
 		return 1;
 	}
